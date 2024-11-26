@@ -1,0 +1,19 @@
+# 참조 게놈 경로
+reference: "/home/jhjh/pipline_long/hg38.fa"
+
+# 샘플 정보
+samples:
+    - "SRR28305182"
+    - "SRR28305185"
+
+# 리소스 설정
+resources:
+    mapping:
+        threads: 16
+        memory: "32G"
+    variant_calling:
+        threads: 8
+        memory: "16G"
+    trimming:
+        threads: 4
+        memory: "8G"
