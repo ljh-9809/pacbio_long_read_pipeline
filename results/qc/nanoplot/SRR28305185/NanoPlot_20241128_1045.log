@@ -1,0 +1,23 @@
+2024-11-28 10:45:06,014 NanoPlot 1.43.0 started with arguments Namespace(threads=4, verbose=False, store=False, raw=False, huge=False, outdir='results/qc/nanoplot/SRR28305185', no_static=False, prefix='', tsv_stats=False, only_report=False, info_in_report=False, maxlength=None, minlength=None, drop_outliers=False, downsample=None, loglength=False, percentqual=False, alength=False, minqual=None, runtime_until=None, readtype='1D', barcoded=False, no_supplementary=False, color='#4CB391', colormap='Greens', format=['png'], plots=['hex', 'dot'], legacy=None, listcolors=False, listcolormaps=False, no_N50=False, N50=True, title=None, font_scale=1, dpi=100, hide_stats=False, fastq=['raw_data/SRR28305185.fastq.gz'], fasta=None, fastq_rich=None, fastq_minimal=None, summary=None, bam=None, ubam=None, cram=None, pickle=None, feather=None, path='results/qc/nanoplot/SRR28305185/')
+2024-11-28 10:45:06,014 Python version is: 3.11.10 | packaged by conda-forge | (main, Oct 16 2024, 01:27:36) [GCC 13.3.0]
+2024-11-28 10:45:06,025 Nanoget: Starting to collect statistics from plain fastq file.
+2024-11-28 10:45:06,025 Nanoget: Decompressing gzipped fastq raw_data/SRR28305185.fastq.gz
+2024-11-28 10:45:07,142 Reduced DataFrame memory usage from 0.015384674072265625Mb to 0.015384674072265625Mb
+2024-11-28 10:45:07,151 Nanoget: Gathered all metrics of 1000 reads
+2024-11-28 10:45:07,158 Calculated statistics
+2024-11-28 10:45:07,159 Using sequenced read lengths for plotting.
+2024-11-28 10:45:07,160 NanoPlot:  Valid color #4CB391.
+2024-11-28 10:45:07,160 NanoPlot:  Valid colormap Greens.
+2024-11-28 10:45:07,161 NanoPlot:  Creating length plots for Read length.
+2024-11-28 10:45:07,161 NanoPlot: Using 1000 reads with read length N50 of 15422bp and maximum of 29232bp.
+2024-11-28 10:45:07,811 Saved results/qc/nanoplot/SRR28305185/WeightedHistogramReadlength  as png (or png for --legacy)
+2024-11-28 10:45:08,442 Saved results/qc/nanoplot/SRR28305185/WeightedLogTransformed_HistogramReadlength  as png (or png for --legacy)
+2024-11-28 10:45:09,122 Saved results/qc/nanoplot/SRR28305185/Non_weightedHistogramReadlength  as png (or png for --legacy)
+2024-11-28 10:45:09,772 Saved results/qc/nanoplot/SRR28305185/Non_weightedLogTransformed_HistogramReadlength  as png (or png for --legacy)
+2024-11-28 10:45:10,676 Saved results/qc/nanoplot/SRR28305185/Yield_By_Length  as png (or png for --legacy)
+2024-11-28 10:45:10,676 Created length plots
+2024-11-28 10:45:10,677 NanoPlot: Creating Read lengths vs Average read quality plots using 1000 reads.
+2024-11-28 10:45:11,485 Saved results/qc/nanoplot/SRR28305185/LengthvsQualityScatterPlot_dot  as png (or png for --legacy)
+2024-11-28 10:45:11,485 Created LengthvsQual plot
+2024-11-28 10:45:11,485 Writing html report.
+2024-11-28 10:45:11,492 Finished!

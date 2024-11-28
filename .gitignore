@@ -1,0 +1,3 @@
+.snakemake/
+hg38.fa
+raw_data/

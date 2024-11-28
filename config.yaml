@@ -3,6 +3,11 @@ reference: "/home/jhjh/pipline_long/hg38.fa"
 
 # 샘플 정보
 samples:
+    tumor: "SRR28305185"
+    normal: "SRR28305182"
+
+# 전체 샘플 리스트 (기존 기능 유지를 위해)
+all_samples:
     - "SRR28305182"
     - "SRR28305185"
 

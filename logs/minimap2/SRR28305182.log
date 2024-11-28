@@ -1,0 +1,10 @@
+[M::mm_idx_gen::48.579*1.44] collected minimizers
+[M::mm_idx_gen::50.931*2.06] sorted minimizers
+[M::main::50.931*2.06] loaded/built the index for 455 target sequence(s)
+[M::mm_mapopt_update::54.779*1.98] mid_occ = 144
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 455
+[M::mm_idx_stat::58.882*1.91] distinct minimizers: 214834535 (90.55% are singletons); average occurrences: 1.424; average spacing: 10.491; total length: 3209286105
+[M::worker_pipeline::61.362*2.11] mapped 1000 sequences
+[M::main] Version: 2.28-r1209
+[M::main] CMD: minimap2 -ax map-hifi -t 16 -R @RG\tID:SRR28305182\tSM:SRR28305182 --MD --eqx -K 500M -Y /home/jhjh/pipline_long/hg38.fa results/trimmed/SRR28305182.fastq.gz
+[M::main] Real time: 62.070 sec; CPU: 130.120 sec; Peak RSS: 16.389 GB
