@@ -22,3 +22,6 @@ resources:
     trimming:
         threads: 4
         memory: "8G"
+    qc:
+        threads: 4
+        memory: "8G"

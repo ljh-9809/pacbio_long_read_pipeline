@@ -1,0 +1,119 @@
+host: cpm-server2
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 72
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+index_bam               2
+minimap2_mapping        2
+pbsv_call               2
+pbsv_discover           2
+post_trim_qc            1
+sort_bam                2
+total                  12
+
+Select jobs to execute...
+Execute 3 jobs...
+
+[Thu Nov 28 13:04:22 2024]
+localrule post_trim_qc:
+    input: results/trimmed/SRR28305185.fastq.gz
+    output: results/qc/nanoplot_post_trim/SRR28305185
+    jobid: 6
+    reason: Missing output files: results/qc/nanoplot_post_trim/SRR28305185
+    wildcards: sample=SRR28305185
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 13:04:22 2024]
+localrule minimap2_mapping:
+    input: /home/jhjh/pipline_long/hg38.fa, results/trimmed/SRR28305182.fastq.gz
+    output: results/mapped/SRR28305182.bam
+    jobid: 9
+    reason: Missing output files: results/mapped/SRR28305182.bam
+    wildcards: sample=SRR28305182
+    threads: 16
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 13:04:22 2024]
+localrule minimap2_mapping:
+    input: /home/jhjh/pipline_long/hg38.fa, results/trimmed/SRR28305185.fastq.gz
+    output: results/mapped/SRR28305185.bam
+    jobid: 12
+    reason: Missing output files: results/mapped/SRR28305185.bam
+    wildcards: sample=SRR28305185
+    threads: 16
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 13:04:30 2024]
+Finished job 6.
+1 of 12 steps (8%) done
+[Thu Nov 28 13:05:21 2024]
+Finished job 12.
+2 of 12 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 13:05:21 2024]
+localrule sort_bam:
+    input: results/mapped/SRR28305185.bam
+    output: results/mapped/SRR28305185.sorted.bam
+    jobid: 11
+    reason: Missing output files: results/mapped/SRR28305185.sorted.bam; Input files updated by another job: results/mapped/SRR28305185.bam
+    wildcards: sample=SRR28305185
+    threads: 8
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 13:05:21 2024]
+Finished job 11.
+3 of 12 steps (25%) done
+Removing temporary output results/mapped/SRR28305185.bam.
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Nov 28 13:05:21 2024]
+localrule pbsv_discover:
+    input: results/mapped/SRR28305185.sorted.bam
+    output: results/variants/SRR28305185.svsig.gz
+    jobid: 16
+    reason: Missing output files: results/variants/SRR28305185.svsig.gz; Input files updated by another job: results/mapped/SRR28305185.sorted.bam
+    wildcards: sample=SRR28305185
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 13:05:21 2024]
+localrule index_bam:
+    input: results/mapped/SRR28305185.sorted.bam
+    output: results/mapped/SRR28305185.sorted.bam.bai
+    jobid: 10
+    reason: Missing output files: results/mapped/SRR28305185.sorted.bam.bai; Input files updated by another job: results/mapped/SRR28305185.sorted.bam
+    wildcards: sample=SRR28305185
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 13:05:21 2024]
+Error in rule pbsv_discover:
+    jobid: 16
+    input: results/mapped/SRR28305185.sorted.bam
+    output: results/variants/SRR28305185.svsig.gz
+    shell:
+        pbsv discover results/mapped/SRR28305185.sorted.bam results/variants/SRR28305185.svsig.gz
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job pbsv_discover since they might be corrupted:
+results/variants/SRR28305185.svsig.gz
+[Thu Nov 28 13:05:21 2024]
+Finished job 10.
+4 of 12 steps (33%) done
+[Thu Nov 28 13:05:27 2024]
+Finished job 9.
+5 of 12 steps (42%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-28T130422.370309.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

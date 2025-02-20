@@ -3,7 +3,7 @@ rule initial_qc:
         "raw_data/{sample}.fastq.gz"
     output:
         directory("results/qc/nanoplot/{sample}/")
-    threads: 4
+    threads: config["resources"]["qc"]["threads"]
     shell:
         "NanoPlot --fastq {input} "
         "--outdir {output} "
@@ -17,7 +17,7 @@ rule post_trim_qc:
         "results/trimmed/{sample}.fastq.gz"
     output:
         directory("results/qc/nanoplot_post_trim/{sample}/")
-    threads: 4
+    threads: config["resources"]["qc"]["threads"]
     shell:
         "NanoPlot --fastq {input} "
         "--outdir {output} "

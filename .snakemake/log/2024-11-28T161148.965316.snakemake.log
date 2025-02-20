@@ -1,0 +1,39 @@
+host: cpm-server2
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count
+------------------  -------
+all                       1
+somatic_sv_calling        1
+total                     2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 16:11:48 2024]
+localrule somatic_sv_calling:
+    input: results/variants/SRR28305185.vcf, results/variants/SRR28305182.vcf
+    output: results/variants/somatic.vcf
+    jobid: 17
+    reason: Missing output files: results/variants/somatic.vcf
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 16:11:49 2024]
+Error in rule somatic_sv_calling:
+    jobid: 17
+    input: results/variants/SRR28305185.vcf, results/variants/SRR28305182.vcf
+    output: results/variants/somatic.vcf
+    shell:
+        
+        bcftools isec             -p results/variants/somatic             -n =1             results/variants/SRR28305185.vcf             results/variants/SRR28305182.vcf &&         mv results/variants/somatic/0000.vcf results/variants/somatic.vcf
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-28T161148.965316.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

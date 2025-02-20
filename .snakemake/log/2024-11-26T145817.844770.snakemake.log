@@ -1,0 +1,47 @@
+host: cpm-server2
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+index_bam               2
+initial_qc              2
+minimap2_mapping        2
+pbsv_call               2
+pbsv_discover           2
+porechop_trim           2
+post_trim_qc            2
+sort_bam                2
+total                  17
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 26 14:58:17 2024]
+localrule initial_qc:
+    input: raw_data/SRR28305182.fastq.gz
+    output: results/qc/nanoplot/SRR28305182
+    jobid: 1
+    reason: Missing output files: results/qc/nanoplot/SRR28305182
+    wildcards: sample=SRR28305182
+    resources: tmpdir=/tmp
+
+[Tue Nov 26 14:58:46 2024]
+Error in rule initial_qc:
+    jobid: 1
+    input: raw_data/SRR28305182.fastq.gz
+    output: results/qc/nanoplot/SRR28305182
+    shell:
+        NanoPlot --fastq raw_data/SRR28305182.fastq.gz --outdir results/qc/nanoplot/SRR28305182 --threads 1 --plots hex dot --format png --N50
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job initial_qc since they might be corrupted:
+results/qc/nanoplot/SRR28305182
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-26T145817.844770.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

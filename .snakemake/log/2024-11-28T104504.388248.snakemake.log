@@ -1,0 +1,120 @@
+host: cpm-server2
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 72
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+index_bam               2
+initial_qc              2
+minimap2_mapping        2
+pbsv_call               2
+pbsv_discover           2
+porechop_trim           2
+post_trim_qc            2
+sort_bam                2
+total                  17
+
+Select jobs to execute...
+Execute 4 jobs...
+
+[Thu Nov 28 10:45:04 2024]
+localrule porechop_trim:
+    input: raw_data/SRR28305182.fastq.gz
+    output: results/trimmed/SRR28305182.fastq.gz
+    jobid: 3
+    reason: Missing output files: results/trimmed/SRR28305182.fastq.gz
+    wildcards: sample=SRR28305182
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 10:45:04 2024]
+localrule porechop_trim:
+    input: raw_data/SRR28305185.fastq.gz
+    output: results/trimmed/SRR28305185.fastq.gz
+    jobid: 4
+    reason: Missing output files: results/trimmed/SRR28305185.fastq.gz
+    wildcards: sample=SRR28305185
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 10:45:04 2024]
+localrule initial_qc:
+    input: raw_data/SRR28305182.fastq.gz
+    output: results/qc/nanoplot/SRR28305182
+    jobid: 1
+    reason: Updated input files: raw_data/SRR28305182.fastq.gz
+    wildcards: sample=SRR28305182
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 10:45:04 2024]
+localrule initial_qc:
+    input: raw_data/SRR28305185.fastq.gz
+    output: results/qc/nanoplot/SRR28305185
+    jobid: 2
+    reason: Missing output files: results/qc/nanoplot/SRR28305185
+    wildcards: sample=SRR28305185
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 10:45:11 2024]
+Finished job 1.
+1 of 17 steps (6%) done
+[Thu Nov 28 10:45:11 2024]
+Finished job 2.
+2 of 17 steps (12%) done
+[Thu Nov 28 10:45:11 2024]
+Finished job 3.
+3 of 17 steps (18%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Nov 28 10:45:11 2024]
+localrule minimap2_mapping:
+    input: /home/jhjh/pipline_long/hg38.fa, results/trimmed/SRR28305182.fastq.gz
+    output: results/mapped/SRR28305182.bam
+    jobid: 9
+    reason: Missing output files: results/mapped/SRR28305182.bam; Input files updated by another job: results/trimmed/SRR28305182.fastq.gz
+    wildcards: sample=SRR28305182
+    threads: 16
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 10:45:11 2024]
+localrule post_trim_qc:
+    input: results/trimmed/SRR28305182.fastq.gz
+    output: results/qc/nanoplot_post_trim/SRR28305182
+    jobid: 5
+    reason: Missing output files: results/qc/nanoplot_post_trim/SRR28305182; Input files updated by another job: results/trimmed/SRR28305182.fastq.gz
+    wildcards: sample=SRR28305182
+    threads: 4
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 10:45:12 2024]
+Error in rule minimap2_mapping:
+    jobid: 9
+    input: /home/jhjh/pipline_long/hg38.fa, results/trimmed/SRR28305182.fastq.gz
+    output: results/mapped/SRR28305182.bam
+    shell:
+        minimap2 -ax map-hifi -t 16 /home/jhjh/pipline_long/hg38.fa results/trimmed/SRR28305182.fastq.gz | samtools view -Sb - > results/mapped/SRR28305182.bam
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job minimap2_mapping since they might be corrupted:
+results/mapped/SRR28305182.bam
+[Thu Nov 28 10:45:12 2024]
+Finished job 4.
+4 of 17 steps (24%) done
+[Thu Nov 28 10:45:19 2024]
+Finished job 5.
+5 of 17 steps (29%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-28T104504.388248.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -4,13 +4,13 @@ rule minimap2_mapping:
         reads = "results/trimmed/{sample}.fastq.gz"
     output:
         temp("results/mapped/{sample}.bam")
-    threads: 16
+    threads: config["resources"]["mapping"]["threads"]
     log:
         "logs/minimap2/{sample}.log"
     shell:
         "minimap2 -ax map-hifi "
         "-t {threads} "
-        "-R '@RG\\tID:{wildcards.sample}\\tSM:{wildcards.sample}' "
+        "-R '@RG\\tID:{wildcards.sample}\\tSM:{wildcards.sample}\\tPL:PACBIO\\tPM:REVIO\\tDS:HiFi' "     # 샘플 정보 추가
         "--MD --eqx "
         "-K 500M "
         "-Y "  # soft clipping 사용 (hard clipping 대신)
@@ -25,7 +25,7 @@ rule sort_bam:
         "results/mapped/{sample}.bam"
     output:
         "results/mapped/{sample}.sorted.bam"
-    threads: 8
+    threads: config["resources"]["mapping"]["threads"]
     shell:
         "samtools sort -@ {threads} -o {output} {input}"
 

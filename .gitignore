@@ -1,3 +1,35 @@
-.snakemake/
-hg38.fa
+# Raw data
 raw_data/
+hg38.fa
+hg38.fa.*
+
+# Log files
+logs/
+
+# Large result files
+*.bam
+*.bai
+*.vcf
+*.vcf.gz
+*.vcf.gz.tbi
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+
+# System files
+.DS_Store
+.Rhistory
+.Rdata
+.RData
+.Ruserdata

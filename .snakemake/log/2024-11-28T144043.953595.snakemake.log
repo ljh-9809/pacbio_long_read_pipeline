@@ -1,0 +1,182 @@
+host: cpm-server2
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+index_bam               2
+minimap2_mapping        2
+pbsv_call               2
+pbsv_discover           2
+sort_bam                2
+total                  11
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 14:40:43 2024]
+localrule minimap2_mapping:
+    input: /home/jhjh/pipline_long/hg38.fa, results/trimmed/SRR28305182.fastq.gz
+    output: results/mapped/SRR28305182.bam
+    log: logs/minimap2/SRR28305182.log
+    jobid: 9
+    reason: Missing output files: results/mapped/SRR28305182.bam; Code has changed since last execution
+    wildcards: sample=SRR28305182
+    threads: 16
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 14:41:46 2024]
+Finished job 9.
+1 of 11 steps (9%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 14:41:46 2024]
+localrule minimap2_mapping:
+    input: /home/jhjh/pipline_long/hg38.fa, results/trimmed/SRR28305185.fastq.gz
+    output: results/mapped/SRR28305185.bam
+    log: logs/minimap2/SRR28305185.log
+    jobid: 12
+    reason: Missing output files: results/mapped/SRR28305185.bam; Code has changed since last execution
+    wildcards: sample=SRR28305185
+    threads: 16
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 14:42:50 2024]
+Finished job 12.
+2 of 11 steps (18%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Nov 28 14:42:50 2024]
+localrule sort_bam:
+    input: results/mapped/SRR28305182.bam
+    output: results/mapped/SRR28305182.sorted.bam
+    jobid: 8
+    reason: Input files updated by another job: results/mapped/SRR28305182.bam
+    wildcards: sample=SRR28305182
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 14:42:50 2024]
+localrule sort_bam:
+    input: results/mapped/SRR28305185.bam
+    output: results/mapped/SRR28305185.sorted.bam
+    jobid: 11
+    reason: Input files updated by another job: results/mapped/SRR28305185.bam
+    wildcards: sample=SRR28305185
+    threads: 8
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 14:42:50 2024]
+Finished job 8.
+3 of 11 steps (27%) done
+Removing temporary output results/mapped/SRR28305182.bam.
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Nov 28 14:42:50 2024]
+localrule pbsv_discover:
+    input: results/mapped/SRR28305182.sorted.bam
+    output: results/variants/SRR28305182.svsig.gz
+    jobid: 14
+    reason: Missing output files: results/variants/SRR28305182.svsig.gz; Input files updated by another job: results/mapped/SRR28305182.sorted.bam
+    wildcards: sample=SRR28305182
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 14:42:50 2024]
+localrule index_bam:
+    input: results/mapped/SRR28305182.sorted.bam
+    output: results/mapped/SRR28305182.sorted.bam.bai
+    jobid: 7
+    reason: Input files updated by another job: results/mapped/SRR28305182.sorted.bam
+    wildcards: sample=SRR28305182
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 14:42:50 2024]
+Finished job 11.
+4 of 11 steps (36%) done
+Removing temporary output results/mapped/SRR28305185.bam.
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Nov 28 14:42:50 2024]
+localrule pbsv_discover:
+    input: results/mapped/SRR28305185.sorted.bam
+    output: results/variants/SRR28305185.svsig.gz
+    jobid: 16
+    reason: Missing output files: results/variants/SRR28305185.svsig.gz; Input files updated by another job: results/mapped/SRR28305185.sorted.bam
+    wildcards: sample=SRR28305185
+    resources: tmpdir=/tmp
+
+
+[Thu Nov 28 14:42:50 2024]
+localrule index_bam:
+    input: results/mapped/SRR28305185.sorted.bam
+    output: results/mapped/SRR28305185.sorted.bam.bai
+    jobid: 10
+    reason: Input files updated by another job: results/mapped/SRR28305185.sorted.bam
+    wildcards: sample=SRR28305185
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 14:42:51 2024]
+Finished job 7.
+5 of 11 steps (45%) done
+[Thu Nov 28 14:42:51 2024]
+Finished job 10.
+6 of 11 steps (55%) done
+[Thu Nov 28 14:42:51 2024]
+Finished job 14.
+7 of 11 steps (64%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 14:42:51 2024]
+localrule pbsv_call:
+    input: /home/jhjh/pipline_long/hg38.fa, results/variants/SRR28305182.svsig.gz
+    output: results/variants/SRR28305182.vcf
+    jobid: 13
+    reason: Missing output files: results/variants/SRR28305182.vcf; Input files updated by another job: results/variants/SRR28305182.svsig.gz
+    wildcards: sample=SRR28305182
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 14:42:51 2024]
+Finished job 16.
+8 of 11 steps (73%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 14:42:51 2024]
+localrule pbsv_call:
+    input: /home/jhjh/pipline_long/hg38.fa, results/variants/SRR28305185.svsig.gz
+    output: results/variants/SRR28305185.vcf
+    jobid: 15
+    reason: Missing output files: results/variants/SRR28305185.vcf; Input files updated by another job: results/variants/SRR28305185.svsig.gz
+    wildcards: sample=SRR28305185
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 14:43:31 2024]
+Finished job 13.
+9 of 11 steps (82%) done
+[Thu Nov 28 14:43:32 2024]
+Finished job 15.
+10 of 11 steps (91%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 14:43:32 2024]
+localrule all:
+    input: results/qc/nanoplot/SRR28305182, results/qc/nanoplot/SRR28305185, results/trimmed/SRR28305182.fastq.gz, results/trimmed/SRR28305185.fastq.gz, results/qc/nanoplot_post_trim/SRR28305182, results/qc/nanoplot_post_trim/SRR28305185, results/mapped/SRR28305182.sorted.bam.bai, results/mapped/SRR28305185.sorted.bam.bai, results/variants/SRR28305182.vcf, results/variants/SRR28305185.vcf
+    jobid: 0
+    reason: Input files updated by another job: results/variants/SRR28305185.vcf, results/variants/SRR28305182.vcf, results/mapped/SRR28305182.sorted.bam.bai, results/mapped/SRR28305185.sorted.bam.bai
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 14:43:32 2024]
+Finished job 0.
+11 of 11 steps (100%) done
+Complete log: .snakemake/log/2024-11-28T144043.953595.snakemake.log

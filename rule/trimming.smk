@@ -3,7 +3,7 @@ rule porechop_trim:
         "raw_data/{sample}.fastq.gz"
     output:
         "results/trimmed/{sample}.fastq.gz"
-    threads: 4
+    threads: config["resources"]["trimming"]["threads"]
     shell:
         "porechop -i {input} "
         "-t {threads} "

@@ -1,0 +1,41 @@
+host: cpm-server2
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+pbsv_somatic_call        1
+total                    2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 16:16:25 2024]
+localrule pbsv_somatic_call:
+    input: /home/jhjh/pipline_long/hg38.fa, results/variants/SRR28305182.svsig.gz, results/variants/SRR28305185.svsig.gz
+    output: results/variants/somatic.vcf
+    jobid: 17
+    reason: Missing output files: results/variants/somatic.vcf
+    threads: 20
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 16:16:53 2024]
+Finished job 17.
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Nov 28 16:16:53 2024]
+localrule all:
+    input: results/qc/nanoplot/SRR28305182, results/qc/nanoplot/SRR28305185, results/trimmed/SRR28305182.fastq.gz, results/trimmed/SRR28305185.fastq.gz, results/qc/nanoplot_post_trim/SRR28305182, results/qc/nanoplot_post_trim/SRR28305185, results/mapped/SRR28305182.sorted.bam.bai, results/mapped/SRR28305185.sorted.bam.bai, results/variants/SRR28305182.vcf, results/variants/SRR28305185.vcf, results/variants/somatic.vcf
+    jobid: 0
+    reason: Input files updated by another job: results/variants/somatic.vcf
+    resources: tmpdir=/tmp
+
+[Thu Nov 28 16:16:53 2024]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-11-28T161625.367455.snakemake.log
